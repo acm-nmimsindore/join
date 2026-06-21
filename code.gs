@@ -8,6 +8,13 @@ function doPost(e) {
     data = e.parameter;
   }
 
+  // Validate email domain
+  var email = (data.email || "").toString().trim().toLowerCase();
+  if (!email.endsWith('@nmims.in') && !email.endsWith('@nmims.edu')) {
+    return ContentService.createTextOutput(JSON.stringify({"result":"error", "message":"Email must be of @nmims.in or @nmims.edu"})).setMimeType(ContentService.MimeType.JSON);
+  }
+
+
   // Updated Headers: 9 Columns for Member Enrollment
   const headers = ["S.No", "Timestamp", "Name", "SAP ID", "Email", "Contact", "Year", "Section", "Branch"];
 

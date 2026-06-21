@@ -204,7 +204,12 @@
                 handleNext() {
                     if (this.step === 2 && !this.formData.name) return this.triggerError("NAME REQUIRED");
                     if (this.step === 3 && this.formData.sapId.length !== 11) return this.triggerError("SAP ID MUST BE 11 DIGITS");
-                    if (this.step === 4 && !this.formData.email.includes('@')) return this.triggerError("VALID EMAIL REQUIRED");
+                    if (this.step === 4) {
+                        const email = (this.formData.email || '').trim().toLowerCase();
+                        if (!email.endsWith('@nmims.in') && !email.endsWith('@nmims.edu')) {
+                            return this.triggerError("MUST BE @NMIMS.IN OR @NMIMS.EDU EMAIL");
+                        }
+                    }
                     if (this.step === 5 && this.formData.contact.length < 10) return this.triggerError("10-DIGIT CONTACT REQUIRED");
                     if (this.step === 7 && !this.formData.year) return this.triggerError("SELECT YEAR");
                     if (this.step === 8 && !this.formData.section) return this.triggerError("SELECT SECTION");
@@ -423,7 +428,7 @@
                         <div x-show="step === 4" class="card-animation">
                             <label class="tech-orbitron text-[10px] text-red-600 font-bold tracking-[4px] mb-4 block uppercase">Contact</label>
                             <h2 class="title-oswald text-3xl sm:text-5xl font-black uppercase mb-10 italic leading-none">Email Address</h2>
-                            <input type="email" class="form-input" placeholder="UNIVERSITY/PERSONAL EMAIL" x-model="formData.email" @keydown.enter="handleNext">
+                            <input type="email" class="form-input" placeholder="UNIVERSITY EMAIL (@nmims.in / @nmims.edu)" x-model="formData.email" @keydown.enter="handleNext">
                         </div>
 
                         <!-- STEP 5: Contact -->
