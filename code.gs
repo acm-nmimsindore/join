@@ -8,8 +8,8 @@ function doPost(e) {
     data = e.parameter;
   }
 
-  // Updated Headers: 11 Columns for Member Enrollment
-  const headers = ["S.No", "Timestamp", "Name", "SAP ID", "Email", "Contact", "Year", "Section", "Branch", "Interests", "Motivation"];
+  // Updated Headers: 9 Columns for Member Enrollment
+  const headers = ["S.No", "Timestamp", "Name", "SAP ID", "Email", "Contact", "Year", "Section", "Branch"];
 
   // Force Update Headers if they don't match or sheet is empty
   if (sheet.getLastRow() === 0 || sheet.getRange(1, 1).getValue() !== "S.No") {
@@ -24,7 +24,6 @@ function doPost(e) {
   }
 
   var sapId = data.sapId || "";
-  var interests = Array.isArray(data.interests) ? data.interests.join(", ") : (data.interests || "");
 
   // Prepare the row data
   var rowData = [
@@ -36,9 +35,7 @@ function doPost(e) {
     data.contact || "",       // F: Contact
     data.year || "",          // G: Year
     data.section || "",       // H: Section
-    data.branch || "",        // I: Branch
-    interests,                // J: Interests
-    data.motivation || ""     // K: Motivation
+    data.branch || ""         // I: Branch
   ];
 
   var range = sheet.getDataRange();
