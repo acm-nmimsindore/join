@@ -380,11 +380,17 @@
                         <!-- STEP 0: Landing -->
                         <div x-show="step === 0" class="text-center card-animation">
                             <div class="flex flex-col items-center mb-6">
-                                <img src="nmims.png" alt="NMIMS" class="h-10 sm:h-14 md:h-20 w-auto object-contain mb-3">
+                                <div class="w-40 h-10 sm:w-56 sm:h-14 md:w-80 md:h-20 flex items-center justify-center mb-3">
+                                    <img src="nmims.png" alt="NMIMS" class="max-h-full max-w-full object-contain">
+                                </div>
                                 <p class="tech-orbitron text-[10px] text-slate-400 font-bold uppercase tracking-[2px] mb-3 italic">In Association With</p>
                                 <div class="flex justify-center items-center gap-6 sm:gap-8 md:gap-10">
-                                    <img src="acm.png" alt="ACM" class="h-10 sm:h-14 md:h-20 w-auto object-contain">
-                                    <img src="acmw.png" alt="ACM-W" class="h-10 sm:h-14 md:h-20 w-auto object-contain">
+                                    <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 flex items-center justify-center">
+                                        <img src="acm.png" alt="ACM" class="max-h-full max-w-full object-contain">
+                                    </div>
+                                    <div class="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 flex items-center justify-center">
+                                        <img src="acmw.png" alt="ACM-W" class="max-h-full max-w-full object-contain">
+                                    </div>
                                 </div>
                             </div>
                             <p class="tech-orbitron text-[8px] sm:text-[9px] text-slate-500 font-bold uppercase tracking-[2px] mb-8 leading-relaxed max-w-md mx-auto">
